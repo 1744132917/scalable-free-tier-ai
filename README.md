@@ -4,6 +4,26 @@ A production-ready blueprint for building high-scale AI applications with near-z
 
 This guide includes architecture diagrams, setup guides, cost and ROI modeling, deployment workflows, benchmark targets, and operational best practices.
 
+## Reference implementation now included
+
+This repository now includes a working TypeScript reference implementation:
+
+- `src/router/*` multi-provider router with failover, health checks, provider + tenant rate limits, circuit breaker, and cost tracking
+- `src/cache/*` Redis (Upstash-compatible) and SQLite edge cache with request fingerprinting, locking, TTL strategy, and invalidation
+- `src/app.ts` task APIs for chat (SSE streaming), image queue handling, TTS batch, embeddings retrieval, webhook verification, idempotency, and tenant isolation
+- `templates/*` serverless templates for Vercel, Cloudflare Workers, AWS Lambda, and Cloud Run
+- `infra/docker/*` Docker and local compose orchestration
+- `load-tests/*` k6 and Artillery scenarios for load, failover, and cache-stampede validation
+
+Quick start:
+
+```bash
+cp .env.example .env
+npm install
+npm run migrate
+npm run dev
+```
+
 ---
 
 ## 1) Multi-Model AI Strategy

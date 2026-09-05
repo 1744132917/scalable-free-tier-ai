@@ -1,0 +1,14 @@
+config:
+  target: http://localhost:3000
+  phases:
+    - duration: 60
+      arrivalRate: 10
+scenarios:
+  - flow:
+      - post:
+          url: /v1/chat
+          headers:
+            x-api-key: change-me-in-production-1234
+            x-tenant-id: artillery
+          json:
+            prompt: test prompt
